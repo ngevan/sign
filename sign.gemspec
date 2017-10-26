@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "lc/version"
+require "sign/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "lc"
-  spec.version       = Lc::VERSION
+  spec.name          = "sign"
+  spec.version       = Sign::VERSION
   spec.authors       = ["Evan Ng"]
   spec.email         = ["contact@evanng.com"]
 
   spec.summary       = %q{Generate a license for your project right from your command-line.}
   spec.description   = %q{A command-line tool that generates a license of your choice in a matter of seconds.}
-  spec.homepage      = "https://github.com/evanscloud/lc"
+  spec.homepage      = "https://github.com/evanscloud/sign"
   spec.license       = "MIT"
 
   if spec.respond_to?(:metadata)

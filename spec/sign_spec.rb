@@ -1,8 +1,8 @@
 require "spec_helper"
 
-RSpec.describe Lc do
+RSpec.describe Sign do
   it "has a version number" do
-    expect(Lc::VERSION).not_to be nil
+    expect(Sign::VERSION).not_to be nil
   end
 
   it "does something useful" do
