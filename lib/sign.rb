@@ -1,5 +1,2 @@
-require "sign/version"
-
-module Sign
-  # Your code goes here...
-end
+require_relative "sign/version"
+require_relative "sign/runner"
