@@ -1,0 +1,11 @@
+
+  Generate a license for your project in a matter of seconds.
+
+  Usage:
+
+      sign [option] <license>
+
+  Options:
+
+      --help     display help information
+
