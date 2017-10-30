@@ -3,8 +3,14 @@ module Sign
     def start
       ARGV << "--help" if ARGV.empty?
 
-      display_help if ARGV[0] == "--help"
-      display_version if ARGV[0] == "--version"
+      case ARGV[0]
+      when "--help"
+        display_help
+      when "--version"
+        display_version
+      else
+        create_license(ARGV)
+      end
     end
 
     def display_help
@@ -24,6 +30,10 @@ module Sign
     
     def display_version
       puts "Sign v" + Sign::VERSION
+    end
+    
+    def create_license(args)
+      license = Sign::Fetcher.get(args[0].downcase)
     end
   end
 end
