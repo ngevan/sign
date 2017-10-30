@@ -28,6 +28,7 @@ RSpec.describe Sign::Runner do
     ARGV << "--version"
     output = capture_stdout { cli.start }
     version = "Sign v#{Sign::VERSION}\n"
+    
     expect(output).to eq(version)
   end
 end

@@ -7,5 +7,6 @@
 
   Options:
 
-      --help     display help information
+      --version   display version number
+      --help      display help information
 
