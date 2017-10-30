@@ -17,7 +17,8 @@ module Sign
       puts ""
       puts "  Options:"
       puts ""
-      puts "      --help     display help information"
+      puts "      --version   display version number"
+      puts "      --help      display help information"
       puts ""
     end
     
