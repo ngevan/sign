@@ -3,10 +3,8 @@ module Sign
     def start
       ARGV << "--help" if ARGV.empty?
 
-      case ARGV[0]
-      when "--help"
-        display_help
-      end
+      display_help if ARGV[0] == "--help"
+      display_version if ARGV[0] == "--version"
     end
 
     def display_help
@@ -21,6 +19,10 @@ module Sign
       puts ""
       puts "      --help     display help information"
       puts ""
+    end
+    
+    def display_version
+      puts "Sign v" + Sign::VERSION
     end
   end
 end

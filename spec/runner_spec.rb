@@ -23,4 +23,11 @@ RSpec.describe Sign::Runner do
 
     expect(output).to eq(fixture("help.txt").read)
   end
+  
+  it "returns version number with '--version'" do
+    ARGV << "--version"
+    output = capture_stdout { cli.start }
+    version = "Sign v#{Sign::VERSION}\n"
+    expect(output).to eq(version)
+  end
 end
