@@ -1,15 +1,16 @@
 module Sign
   class Runner
     def start
-      ARGV << "--help" if ARGV.empty?
+      argv = ARGV.clone
+      argv << "--help" if argv.empty?
 
-      case ARGV[0]
+      case argv[0]
       when "--help"
         display_help
       when "--version"
         display_version
       else
-        create_license(ARGV)
+        create_license(argv)
       end
     end
 
