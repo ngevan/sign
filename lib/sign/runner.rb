@@ -33,8 +33,8 @@ module Sign
       puts "Sign v" + Sign::VERSION
     end
     
-    def create_license(args)
-      license = Sign::Fetcher.get(args[0].downcase)
+    def create_license(argv)
+      license = Sign::Fetcher.new.get(argv[0].downcase)
     end
   end
 end

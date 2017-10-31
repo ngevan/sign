@@ -4,7 +4,7 @@ module Sign
       "mit"   # initial test run
     ]
     
-    def self.get(license)
+    def get(license)
       if LIST.include?(license)
         file_name = license + ".txt"
         license_path = File.expand_path("../../vendor/licenses", __dir__)

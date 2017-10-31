@@ -1,7 +1,7 @@
 require "spec_helper"
 
 RSpec.describe Sign::Fetcher do
-  let(:fetcher) { Sign::Fetcher }
+  let(:fetcher) { Sign::Fetcher.new }
   
   describe ".get method" do
     it "returns if license exists" do
