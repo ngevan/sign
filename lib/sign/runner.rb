@@ -30,11 +30,19 @@ module Sign
     end
     
     def display_version
-      puts "Sign v" + Sign::VERSION
+      puts "Sign v#{Sign::VERSION}"
     end
     
     def create_license(argv)
-      license = Sign::Fetcher.new.get(argv[0].downcase)
+      license = Sign::Fetcher.new.get(argv[0])
+      name = parse_argument(argv[1])
+      year = parse_argument(argv[2])
+      
+      # Sign::Generator.new.make(license, name, year)
+    end
+    
+    def parse_argument(arg)
+      arg.scan(/=(.*)/).last[0]
     end
   end
 end

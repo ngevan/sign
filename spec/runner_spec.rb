@@ -6,29 +6,49 @@ RSpec.describe Sign::Runner do
   after(:each) do
     ARGV.clear
   end
+  
+  context "#display_help" do
+    it "returns help when no arguments are given" do
+      output = capture_stdout { cli.start }
 
-  it "starts successfully on initialization" do
-    expect(cli).to_not be nil
-  end
+      expect(output).to eq(fixture("help-fixture.txt").read)
+    end
 
-  it "returns help when no arguments are given" do
-    output = capture_stdout { cli.start }
+    it "returns help information with '--help'" do
+      ARGV << "--help"
+      output = capture_stdout { cli.start }
 
-    expect(output).to eq(fixture("help.txt").read)
-  end
-
-  it "returns help information with '--help'" do
-    ARGV << "--help"
-    output = capture_stdout { cli.start }
-
-    expect(output).to eq(fixture("help.txt").read)
+      expect(output).to eq(fixture("help-fixture.txt").read)
+    end
   end
   
-  it "returns version number with '--version'" do
-    ARGV << "--version"
-    output = capture_stdout { cli.start }
-    version = "Sign v#{Sign::VERSION}\n"
+  context "#create_license" do
+    it "parses user arguments for name and year if given" do
+      name = "--name=Rick Deckard"
+      year = "--year=2049"
+      
+      expect(cli.parse_argument(name)).to eq("Rick Deckard")
+      expect(cli.parse_argument(year)).to eq("2049")
+    end
     
-    expect(output).to eq(version)
+    it "calls Sign::Fetcher#get to retrieve license" do
+      argv = ["mit", "Rick Deckard", "2049"]
+      fetcher = Sign::Fetcher.new
+      
+      expect(cli).to receive(:create_license).with(argv).and_return(fetcher)
+      expect(fetcher).to receive(:get).with(argv[0])
+      cli.create_license(argv)
+      fetcher.get(argv[0])
+    end
+    
+    it "calls Sign::Generator#make to make license file" do
+      argv = ["mit", "Rick Deckard", "2049"]
+      generator = Sign::Generator.new
+      
+      expect(cli).to receive(:create_license).with(argv).and_return(generator)
+      expect(generator).to receive(:make).with(argv)
+      cli.create_license(argv)
+      generator.make(argv)
+    end
   end
 end
