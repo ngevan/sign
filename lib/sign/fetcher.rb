@@ -5,13 +5,16 @@ module Sign
     ]
     
     def get(license)
-      if LIST.include?(license)
-        file_name = license + ".txt"
-        license_path = File.expand_path("../../vendor/licenses", __dir__)
-        license_file = File.open(license_path + "/" + file_name)
+      if LIST.include?(license.downcase)
+        file_name = "#{license}.txt"
+        File.open("#{license_path}/#{file_name}")
       else
-        return "ArgumentError: #{license} is not available."
+        raise ArgumentError, "#{license} is not available."
       end
+    end
+    
+    def license_path
+      File.expand_path("../../vendor/licenses", __dir__)
     end
   end
 end
