@@ -9,6 +9,8 @@ module Sign
         display_help
       when "--version"
         display_version
+      when "--list"
+        display_list
       else
         create_license(argv)
       end
@@ -26,6 +28,15 @@ module Sign
       puts ""
       puts "      --version   display version number"
       puts "      --help      display help information"
+      puts "      --list      display list of licenses"
+      puts ""
+    end
+    
+    def display_list
+      puts ""
+      puts "List of available licenses:"
+      puts ""
+      Sign::Fetcher.get_list
       puts ""
     end
     

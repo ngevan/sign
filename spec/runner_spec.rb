@@ -22,6 +22,15 @@ RSpec.describe Sign::Runner do
     end
   end
   
+  context "#display_list" do
+    it "returns a list of available licenses with '--list'" do
+      ARGV << "--list"
+      output = capture_stdout { cli.start }
+
+      expect(output).to eq(fixture("list-fixture.txt").read)
+    end
+  end
+  
   context "#create_license" do
     it "parses user arguments for name and year if given" do
       name = "--name=Rick Deckard"

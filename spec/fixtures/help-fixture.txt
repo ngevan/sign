@@ -9,4 +9,5 @@
 
       --version   display version number
       --help      display help information
+      --list      display list of licenses
 

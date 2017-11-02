@@ -1,0 +1,12 @@
+
+List of available licenses:
+
+agpl-3.0         gnu affero general public license
+apache-2.0       apache license
+bsd-2            bsd 2-clause license
+bsd-3            bsd 3-clause license
+gpl-2.0          gnu general public license
+gpl-3.0          gnu general public license
+mit              mit license
+unlicense        this is free and unencumbered software released into the public domain
+
