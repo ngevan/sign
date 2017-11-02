@@ -1,5 +1,4 @@
 require "spec_helper"
-require "Date"
 
 RSpec.describe Sign::Generator do
   let(:generator) { Sign::Generator.new }

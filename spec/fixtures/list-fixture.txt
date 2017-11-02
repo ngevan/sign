@@ -1,12 +1,30 @@
 
 List of available licenses:
 
+afl-3.0          academic free license afl v 30
 agpl-3.0         gnu affero general public license
 apache-2.0       apache license
+artistic-2.0     the artistic license 20
 bsd-2            bsd 2-clause license
 bsd-3            bsd 3-clause license
+cc-by-4.0        attribution 40 international
+cc-by-sa-4.0     attribution-sharealike 40 international
+cc0-1.0          cc0 10 universal
+ecl-2.0          educational community license
+epl-1.0          eclipse public license - v 10
+eupl-1.1         european union public licence
 gpl-2.0          gnu general public license
 gpl-3.0          gnu general public license
+isc              isc license
+lgpl-2.1         gnu lesser general public license
+lgpl-3.0         gnu lesser general public license
+lppl-1.3c        the latex project public license
 mit              mit license
+mpl-2.0          mozilla public license version 20
+ms-pl            microsoft public license ms-pl
+ms-rl            microsoft reciprocal license ms-rl
+osl-3.0          open software license osl v 30
+postgresql       postgresql licence
 unlicense        this is free and unencumbered software released into the public domain
+wtfpl            do what the fuck you want to public license
 
