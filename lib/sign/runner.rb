@@ -35,8 +35,8 @@ module Sign
     
     def create_license(argv)
       license = Sign::Fetcher.new.get(argv[0])
-      name = parse_argument(argv[1])
-      year = parse_argument(argv[2])
+      name = !!argv[1] ? parse_argument(argv[1]) : nil
+      year = !!argv[2] ? parse_argument(argv[2]) : nil
       
       Sign::Generator.new.make(license, name, year)
     end
