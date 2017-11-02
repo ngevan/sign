@@ -10,11 +10,13 @@ module Sign
       year = get_year if year.nil?
       
       if placeholders_exist?(license_template)
-        modified_license = license_template.gsub("[AUTHOR]", name)
-        modified_license = modified_license.gsub("[YEAR]", year)
+        new_license = license_template.gsub("[AUTHOR]", name)
+        new_license = new_license.gsub("[YEAR]", year)
+      else
+        new_license = license_template
       end
       
-      create_new_file(modified_license)
+      create_new_file(new_license)
     end
     
     def placeholders_exist?(license_template)
@@ -23,9 +25,9 @@ module Sign
       placeholders.any? { |placeholder| license_template.include?(placeholder) }
     end
     
-    def create_new_file(modified_license)
+    def create_new_file(new_license)
       new_file = File.new("LICENSE", "w")
-      new_file.puts(modified_license)
+      new_file.puts(new_license)
       new_file.close
       puts "License created \033[91m<3\033[0m"
     end
