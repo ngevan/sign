@@ -38,7 +38,7 @@ module Sign
       name = parse_argument(argv[1])
       year = parse_argument(argv[2])
       
-      # Sign::Generator.new.make(license, name, year)
+      Sign::Generator.new.make(license, name, year)
     end
     
     def parse_argument(arg)
