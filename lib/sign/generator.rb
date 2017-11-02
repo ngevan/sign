@@ -2,7 +2,7 @@ require "Date"
 
 module Sign
   class Generator
-    def make(license, name, year)
+    def create(license, name, year)
       raise ArgumentError, "#{license} is not available." unless File.readable?(license)
 
       license_template = File.read(license)

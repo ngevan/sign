@@ -18,7 +18,7 @@ module Sign
       end
     end
     
-    def get(license)
+    def get_license(license)
       if @@list.has_key?(license.downcase)
         file_name = "#{license}.txt"
         File.open("#{license_path}/#{file_name}")

@@ -3,21 +3,21 @@ require "spec_helper"
 RSpec.describe Sign::Generator do
   let(:generator) { Sign::Generator.new }
   
-  describe "#make" do
+  describe "#create" do
     it "returns an error if license is not an object" do
       license = "mit"
       name = "Rick Deckard"
       year = "2017"
       
-      expect{ generator.make(license, name, year) }.to raise_error(ArgumentError)
+      expect{ generator.create(license, name, year) }.to raise_error(ArgumentError)
     end
     
     context "if placeholders exist in license" do
       it "sets name as user's input if provided by the user" do
         argv = ["mit", "Rick Deckard", "2049"]
         
-        expect(generator).to receive(:make).with(argv)
-        generator.make(argv)
+        expect(generator).to receive(:create).with(argv)
+        generator.create(argv)
         
         expect(argv[1]).to be_a(String)
         expect(argv[1]).to eq("Rick Deckard")
@@ -26,8 +26,8 @@ RSpec.describe Sign::Generator do
       it "sets year as user's input if provided by the user" do
         argv = ["mit", "Rick Deckard", "2049"]
         
-        expect(generator).to receive(:make).with(argv)
-        generator.make(argv)
+        expect(generator).to receive(:create).with(argv)
+        generator.create(argv)
         
         expect(argv[2]).to be_a(String)
         expect(argv[2]).to eq("2049")
