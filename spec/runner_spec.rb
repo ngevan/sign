@@ -32,6 +32,30 @@ RSpec.describe Sign::Runner do
   end
   
   context "#create_license" do
+    it "calls #create_license if license exists and user wants to overwrite" do      
+      expect(cli).to receive(:license_exist?).and_return(File)
+      expect(File).to receive(:exist?).with("LICENSE").and_return(true)
+      expect(cli).to receive(:create_license).and_return(false)
+      
+      cli.license_exist?
+      file_existence = File.exist?("LICENSE")
+      output = cli.create_license
+      
+      expect(output).to be false
+    end
+    
+    it "terminates if license exists and user doesn't want to overwrite" do
+      expect(cli).to receive(:license_exist?).and_return(File)
+      expect(File).to receive(:exist?).with("LICENSE").and_return(true)
+      expect(cli).to receive(:create_license).and_return(true)
+      
+      cli.license_exist?
+      file_existence = File.exist?("LICENSE")
+      output = cli.create_license
+      
+      expect(output).to be true
+    end
+    
     it "parses user arguments for name and year if given" do
       name = "--name=Rick Deckard"
       year = "--year=2049"
