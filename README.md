@@ -22,7 +22,7 @@ This process can take about 1-2 minutes, precious time that you can be using for
 2. Enter `sign mit`.
 3. Profit.
 
-Sign creates a license in your current project directory for you in less than 10 seconds. No need for an internet connection either!
+Sign creates a license in your current project directory for you in a matter of seconds. **No need for an internet connection either!**
 
 ## Installation
 
@@ -42,9 +42,15 @@ And then execute `bundle`.
 
 ## Usage
 
-There are a wide range of licenses available (provided by [Open Source Initiative](https://opensource.org/)). The format is `sign <license name> --name=[NAME] --year=[YEAR]`. If either name or year is needed and are not provided, it will automatically try to detect a `.gitconfig` file on your system and grab the name from there. The year will automatically be set to the current year too.
+There are a wide range of licenses available (provided by [Open Source Initiative](https://opensource.org/)). The format is `sign <license name> --name=[NAME] --year=[YEAR]`. If either name or year are needed and not provided, it will automatically try to detect a `.gitconfig` file on your system and grab the name from there. The year will automatically be set to the current year too.
 
 ### Examples
+
+To see a list of available licenses:
+
+```
+sign --list
+```
 
 To create an MIT license with name and year:
 
@@ -56,12 +62,6 @@ To create an MIT license with automatic name and year:
 
 ```
 sign mit
-```
-
-To see a list of available licenses:
-
-```
-sign --list
 ```
 
 ## Updates
