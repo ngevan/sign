@@ -5,11 +5,11 @@ module Sign
       argv << "--help" if argv.empty?
 
       case argv[0]
-      when "--help"
+      when "--help", "-h"
         show_help
-      when "--version"
+      when "--version", "-v"
         show_version
-      when "--list"
+      when "--list", "-l"
         show_list
       else
         create_license(argv) unless license_exist?
@@ -26,9 +26,9 @@ module Sign
       puts ""
       puts "  Options:"
       puts ""
-      puts "      --version   display version number"
-      puts "      --help      display help information"
-      puts "      --list      display list of licenses"
+      puts "      --version | -v    display version number"
+      puts "      --help    | -h    display help information"
+      puts "      --list    | -l    display list of licenses"
       puts ""
     end
     
