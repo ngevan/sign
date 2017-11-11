@@ -1,6 +1,8 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+vendor = File.expand_path("../vendor", __FILE__)
+$LOAD_PATH.unshift(vendor) unless $LOAD_PATH.include?(vendor)
 require "sign/version"
 
 Gem::Specification.new do |spec|
@@ -26,7 +28,7 @@ Gem::Specification.new do |spec|
   end
   spec.bindir        = "bin"
   spec.executables   = spec.files.grep(%r{^bin/sign}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  spec.require_paths = ["lib", "vendor"]
   spec.required_ruby_version = '>= 2.2.8'
 
   spec.add_development_dependency "bundler", "~> 1.15"
