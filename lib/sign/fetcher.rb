@@ -1,34 +1,23 @@
 module Sign
   class Fetcher
-    @@list = {}
-    
-    Dir["vendor/licenses/*.txt"].select do |file|
-      if File.file?(file)
-        name = File.basename(file, ".txt")
-        info = File.open(file){ |file| file.readline }.downcase.strip.gsub(/[^-a-z0-9\s]/, "")
-        @@list[name] = info
+  
+    def self.get_list(list)
+      Dir["#{$LOAD_PATH[2]}/licenses/*.txt"].select do |file|
+        if File.file?(file)
+          name = File.basename(file, ".txt")
+          info = File.open(file){ |file| file.readline }.downcase.strip.gsub(/[^-a-z0-9\s]/, "")
+          list[name] = info unless list.has_key?(name)
+        end
       end
     end
     
-    def self.get_list
-      format = "%-16s %10s"
-      
-      @@list.each do |name, info| 
-        puts format % [name, info]
-      end
-    end
-    
-    def get_license(license)
-      if @@list.has_key?(license.downcase)
-        file_name = "#{license}.txt"
-        File.open("#{license_path}/#{file_name}")
-      else
-        raise ArgumentError, "#{license} is not available."
-      end
+    def get_license(license)      
+      file_name = "#{license}.txt"
+      File.open("#{license_path}/#{file_name}")
     end
     
     def license_path
-      File.expand_path("../../vendor/licenses", __dir__)
+      File.expand_path("#{$LOAD_PATH[2]}/licenses", __dir__)
     end
   end
 end

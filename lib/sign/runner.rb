@@ -1,8 +1,12 @@
 module Sign
   class Runner
     def start
+      list = {}
+      
       argv = ARGV.clone
       argv << "--help" if argv.empty?
+      
+      Sign::Fetcher.get_list(list)
 
       case argv[0]
       when "--help", "-h"
@@ -10,9 +14,9 @@ module Sign
       when "--version", "-v"
         show_version
       when "--list", "-l"
-        show_list
+        show_list(list)
       else
-        create_license(argv) unless license_exist?
+        create_license(argv, list) unless license_exist?
       end
     end
 
@@ -32,11 +36,15 @@ module Sign
       puts ""
     end
     
-    def show_list
+    def show_list(list)
+      format = "%-16s %10s"
+      
       puts ""
       puts "List of available licenses:"
       puts ""
-      Sign::Fetcher.get_list
+      list.each do |name, info| 
+        puts format % [name, info]
+      end
       puts ""
     end
     
@@ -68,8 +76,13 @@ module Sign
       end
     end
     
-    def create_license(argv)
-      license = Sign::Fetcher.new.get_license(argv[0])
+    def create_license(argv, list)
+      if list.has_key?(argv[0].downcase)
+        license = Sign::Fetcher.new.get_license(argv[0])
+      else
+        raise ArgumentError, "#{argv[0]} is not available."
+      end
+      
       name = !!argv[1] ? parse_argument(argv[1]) : nil
       year = !!argv[2] ? parse_argument(argv[2]) : nil
       

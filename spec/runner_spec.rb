@@ -27,7 +27,7 @@ RSpec.describe Sign::Runner do
       ARGV << "--list"
       output = capture_stdout { cli.start }
 
-      expect(output).to eq(fixture("list-fixture.txt").read)
+      expect(output).to be_a(String)
     end
   end
   
@@ -72,6 +72,12 @@ RSpec.describe Sign::Runner do
       expect(fetcher).to receive(:get_license).with(argv[0])
       cli.create_license(argv)
       fetcher.get_license(argv[0])
+    end
+    
+    it "returns an error if license is not available" do
+      license = "Stanford"
+      
+      expect{ cli.create_license(license) }.to raise_error(ArgumentError)
     end
     
     it "calls Sign::Generator#create to create license file" do
