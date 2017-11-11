@@ -7,7 +7,7 @@
 
   Options:
 
-      --version   display version number
-      --help      display help information
-      --list      display list of licenses
+      --version | -v    display version number
+      --help    | -h    display help information
+      --list    | -l    display list of licenses
 
