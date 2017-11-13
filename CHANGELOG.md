@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.0.5] - 2017-11-13
+### Changed
+- Use `Time` over `Date` class for auto-generating the year.
+
+
 ## [1.0.3] - 2017-11-11
 ### Changed
 - Fix issue where `Sign` wasn't able to locate license templates.
