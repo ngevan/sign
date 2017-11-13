@@ -1,7 +1,6 @@
 require "bundler/setup"
 require "sign"
 require "test_helper"
-require "Date"
 
 RSpec.configure do |config|
   config.example_status_persistence_file_path = ".rspec_status"

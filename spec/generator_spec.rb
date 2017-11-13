@@ -54,7 +54,7 @@ RSpec.describe Sign::Generator do
       end
       
       it "sets year as current year if it isn't provided by the user" do
-        expect(generator.get_year).to eq(Date.today.year.to_s)
+        expect(generator.get_year).to eq(Time.new.year.to_s)
       end
     end
     
