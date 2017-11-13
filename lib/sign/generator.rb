@@ -1,5 +1,3 @@
-require "Date"
-
 module Sign
   class Generator
     def create(license, name, year)
@@ -49,7 +47,7 @@ module Sign
     end
     
     def get_year
-      return Date.today.year.to_s
+      return Time.new.year.to_s
     end
     
     def gitconfig_exist?
